@@ -29,5 +29,11 @@
 			</div>
 		</div>
 	</nav>
+		<div class="container">
+		请访问： <i class="icon icon-github"></i> <a
+			href="https://github.com/QIU1995NONAME/Q2017_GraduationProject">
+			https://github.com/QIU1995NONAME/Q2017_GraduationProject</a>
+			获得更多支持。
+	</div>
 </body>
 </html>

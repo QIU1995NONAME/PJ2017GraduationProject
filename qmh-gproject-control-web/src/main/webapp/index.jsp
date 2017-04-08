@@ -29,5 +29,36 @@
 			</div>
 		</div>
 	</nav>
+	<div class="container">
+		<div class="panel panel-primary">
+			<div class="panel-heading">欢迎使用QP-Control！</div>
+			<div class="panel-body">
+				<div class="cards">
+					<div class="col-md-4 col-sm-6 col-lg-2">
+						<a class="card" href="mgr-hardware.jsp"><h1 align='center'>站点管理</h1></a>
+					</div>
+					<div class="col-md-4 col-sm-6 col-lg-2">
+						<a class="card" href="mgr-data.jsp"><h1 align='center'>数据管理</h1></a>
+					</div>
+					<div class="col-md-4 col-sm-6 col-lg-2">
+						<a class="card" href="mgr-back.jsp"><h1 align='center'>后台管理</h1></a>
+					</div>
+					<div class="col-md-4 col-sm-6 col-lg-2">
+						<a class="card" href="view-data.jsp"><h1 align='center'>数据展示</h1></a>
+					</div>
+					<div class="col-md-4 col-sm-6 col-lg-2">
+						<a class="card" href="help.jsp"><h1 align='center'>帮助</h1></a>
+					</div>
+					<div class="col-md-4 col-sm-6 col-lg-2">
+						<a class="card" href="about.jsp"><h1 align='center'>关于</h1></a>
+					</div>
+				</div>
+			</div>
+			<div class="panel-footer">
+				<i class="icon icon-github"></i> 
+				<a href="https://github.com/QIU1995NONAME/Q2017_GraduationProject/tree/V0.00-dev">QP-Control Version 0.00</a>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
