@@ -13,9 +13,16 @@
 	<nav class="navbar navbar-inverse" role="navigation">
 		<div class="container-fluid">
 			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-collapse-qpcontrol">
+					<span class="sr-only">切换导航</span> 
+					<span class="icon-bar"></span> 
+					<span class="icon-bar"></span> 
+					<span class="icon-bar"></span>
+				</button>
 				<a class="navbar-brand" href="./">QP-Control</a>
 			</div>
-			<div class="collapse navbar-collapse navbar-collapse-example">
+			<div class="collapse navbar-collapse navbar-collapse-qpcontrol">
 				<ul class="nav navbar-nav">
 					<li><a href="mgr-hardware.jsp">站点管理</a></li>
 					<li><a href="mgr-data.jsp">数据管理</a></li>
