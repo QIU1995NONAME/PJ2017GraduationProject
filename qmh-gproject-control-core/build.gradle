@@ -4,6 +4,13 @@ apply plugin: 'eclipse'
 dependencies {
     compile (
         'org.slf4j:slf4j-api:1.7.21',
+        'org.mariadb.jdbc:mariadb-java-client:1.5.5',
+        'com.google.code.gson:gson:2.8.0',
+        'com.google.guava:guava:20.0',
+        'org.hibernate:hibernate-core:5.2.4.Final',
+        'org.hibernate:hibernate-c3p0:5.2.4.Final',
+        'org.hibernate:hibernate-entitymanager:5.2.4.Final',
+        'org.hibernate:hibernate-ehcache:5.2.4.Final'
     )
     testCompile (
         'junit:junit:4.12',
