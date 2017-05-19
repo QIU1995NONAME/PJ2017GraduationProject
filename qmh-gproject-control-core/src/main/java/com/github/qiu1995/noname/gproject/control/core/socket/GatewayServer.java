@@ -15,15 +15,13 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
  * @author QMH
  *
  */
-public class GatewayServer extends Thread {
+public class GatewayServer {
 	private ServerBootstrap boot;
 	private EventLoopGroup bossGroup;
 	private EventLoopGroup workerGroup;
 	private int port;
 
 	public GatewayServer(int port) {
-		super();
-		this.setName("GatewayServer");
 		this.boot = new ServerBootstrap();
 		this.bossGroup = new NioEventLoopGroup();
 		this.workerGroup = new NioEventLoopGroup();
@@ -41,15 +39,23 @@ public class GatewayServer extends Thread {
 		});
 	}
 
-	public void run() {
+	public void stop() {
 		try {
-			ChannelFuture future = boot.bind(this.port).sync();
-			future.channel().closeFuture().sync();
+			this.bossGroup.shutdownGracefully().sync();
+			this.workerGroup.shutdownGracefully().sync();
 		} catch (InterruptedException e) {
 			e.printStackTrace();
-		} finally {
-			this.bossGroup.shutdownGracefully();
-			this.workerGroup.shutdownGracefully();
+		}
+	}
+
+	public void start() {
+		try {
+			ChannelFuture future = boot.bind(this.port).sync();
+			if (future.isSuccess()) {
+				System.out.println("Server is Running!");
+			}
+		} catch (InterruptedException e) {
+			e.printStackTrace();
 		}
 	}
 }

@@ -19,7 +19,7 @@ public class AutoRunListener implements ServletContextListener {
 	@Override
 	public void contextDestroyed(ServletContextEvent event) {
 		if (server != null) {
-			server.interrupt();
+			server.stop();
 			server = null;
 		}
 	}
