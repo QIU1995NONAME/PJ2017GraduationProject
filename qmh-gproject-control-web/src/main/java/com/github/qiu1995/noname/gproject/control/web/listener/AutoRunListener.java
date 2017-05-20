@@ -4,6 +4,7 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 
+import com.github.qiu1995.noname.gproject.control.core.QPCCore;
 import com.github.qiu1995.noname.gproject.control.core.socket.GatewayServer;
 
 /**
@@ -22,33 +23,15 @@ public class AutoRunListener implements ServletContextListener {
 			server.stop();
 			server = null;
 		}
+		QPCCore.getInstance().disable();
 	}
 
 	@Override
 	public void contextInitialized(ServletContextEvent event) {
+		QPCCore.getInstance().enable();
 		if (server == null) {
 			server = new GatewayServer(8090);
 			server.start();
 		}
 	}
-
 }
-/*
- * public class MyListener implements ServletContextListener {
- * 
- * private java.util.Timer timer = null ; public void
- * contextDestroyed(ServletContextEvent event) { // TODO Auto-generated method
- * stub
- * 
- * }
- * 
- * public void contextInitialized(ServletContextEvent event) {
- * 
- * timer = new java.util.Timer(true) ; event.getServletContext().log("定时器已启动。")
- * ; timer.schedule(new MyTask(event.getServletContext()), 0, 5000) ;
- * event.getServletContext().log("已经添加任务调度表。" ) ;
- * 
- * }
- * 
- * }
- */
