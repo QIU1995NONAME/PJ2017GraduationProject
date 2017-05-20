@@ -8,6 +8,9 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.handler.codec.serialization.ClassResolvers;
+import io.netty.handler.codec.serialization.ObjectDecoder;
+import io.netty.handler.codec.serialization.ObjectEncoder;
 
 /**
  * 为Gateway通信设定的Server
@@ -34,6 +37,8 @@ public class GatewayServer {
 
 			@Override
 			protected void initChannel(SocketChannel ch) throws Exception {
+				ch.pipeline().addLast(new ObjectEncoder());
+				ch.pipeline().addLast(new ObjectDecoder(ClassResolvers.cacheDisabled(null)));
 				ch.pipeline().addLast(new GatewayServerHandler());
 			}
 		});
