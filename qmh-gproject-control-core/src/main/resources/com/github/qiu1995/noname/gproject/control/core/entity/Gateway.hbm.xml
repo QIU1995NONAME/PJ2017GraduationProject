@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-5-21 15:36:38 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+ <class
+  name="com.github.qiu1995.noname.gproject.control.core.entity.Gateway" table="GATEWAY">
+  <id name="ID" type="int">
+   <column name="ID"/>
+   <generator class="assigned"/>
+  </id>
+  <property generated="never" lazy="false" name="status" type="int">
+   <column default="0" index="IDX_GATEWAY_STATUS" name="STATUS" not-null="true"/>
+  </property>
+  <property generated="never" lazy="false" name="name" type="java.lang.String">
+   <column default="'GatewayUnnamed'" index="IDX_GATEWAY_NAME"
+    length="50" name="NAME" not-null="true"/>
+  </property>
+  <property generated="never" lazy="false" name="comment" type="java.lang.String">
+   <column length="200" name="COMMENT"/>
+  </property>
+ </class>
+</hibernate-mapping>

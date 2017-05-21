@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-5-21 15:52:51 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+ <class
+  name="com.github.qiu1995.noname.gproject.control.core.entity.VarData" table="VARDATA">
+  <id name="ID" type="long">
+   <column name="ID"/>
+   <generator class="native"/>
+  </id>
+  <many-to-one
+   class="com.github.qiu1995.noname.gproject.control.core.entity.Variable"
+   fetch="join" name="var">
+   <column default="0" index="IDX_VARDATA_VAR" name="VAR" not-null="true"/>
+  </many-to-one>
+  <property generated="never" lazy="false" name="timestamp" type="long">
+   <column default="0" index="IDX_VARDATA_TIMESTAMP" name="TIMESTAMP" not-null="true"/>
+  </property>
+  <property generated="never" lazy="false" name="data" type="java.sql.Blob">
+   <column name="DATA" not-null="true"/>
+  </property>
+ </class>
+</hibernate-mapping>

@@ -8,14 +8,24 @@
 		<property name="hibernate.connection.password">!gpj@control#password$</property>
 		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/GProject</property>
 		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+		<!-- 
 		<property name="hibernate.show_sql">true</property>
 		<property name="hibernate.format_sql">true</property>
 		<property name="hibernate.hbm2ddl.auto">update</property>
+		 -->
 		<property name="hibernate.c3p0.acquire_increment">10</property>
 		<property name="hibernate.c3p0.idle_test_period">300</property>
 		<property name="hibernate.c3p0.max_size">80</property>
 		<property name="hibernate.c3p0.max_statements">360</property>
 		<property name="hibernate.c3p0.min_size">20</property>
 		<property name="hibernate.c3p0.timeout">300</property>
+		<mapping
+			resource="com/github/qiu1995/noname/gproject/control/core/entity/Gateway.hbm.xml" />
+		<mapping
+			resource="com/github/qiu1995/noname/gproject/control/core/entity/Station.hbm.xml" />
+		<mapping
+			resource="com/github/qiu1995/noname/gproject/control/core/entity/VarData.hbm.xml" />
+		<mapping
+			resource="com/github/qiu1995/noname/gproject/control/core/entity/Variable.hbm.xml" />
 	</session-factory>
 </hibernate-configuration>

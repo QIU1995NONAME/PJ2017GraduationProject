@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-5-21 15:36:48 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+ <class
+  name="com.github.qiu1995.noname.gproject.control.core.entity.Variable" table="VARIABLE">
+  <id name="ID" type="long">
+   <column name="ID"/>
+   <generator class="native"/>
+  </id>
+  <many-to-one
+   class="com.github.qiu1995.noname.gproject.control.core.entity.Station"
+   fetch="join" name="owner">
+   <column default="0" index="IDX_VARIABLE_OWNER" name="OWNER" not-null="true"/>
+  </many-to-one>
+  <property generated="never" lazy="false" name="num" type="int">
+   <column default="0" index="IDX_VARIABLE_NUM" name="NUM" not-null="true"/>
+  </property>
+  <property generated="never" lazy="false" name="length" type="int">
+   <column default="4" name="LENGTH" not-null="true"/>
+  </property>
+  <property generated="never" lazy="false" name="comment" type="java.lang.String">
+   <column name="COMMENT"/>
+  </property>
+ </class>
+</hibernate-mapping>
