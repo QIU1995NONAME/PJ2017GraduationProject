@@ -2,6 +2,8 @@ package com.github.qiu1995.noname.gproject.control.core.entity;
 
 import java.util.Set;
 
+import com.google.common.collect.Sets;
+
 public class Station {
 	private int ID;
 	private int status;
@@ -47,6 +49,24 @@ public class Station {
 
 	public void setVars(Set<Variable> vars) {
 		this.vars = vars;
+	}
+
+	public Station() {
+		this.ID = 0;
+		this.name = "";
+		this.status = 0;
+		this.comment = "";
+		this.vars = Sets.newHashSet();
+	}
+
+	public Station clone() {
+		Station res = new Station();
+		res.ID = this.ID;
+		res.name = this.name;
+		res.status = this.status;
+		res.comment = this.comment;
+		res.vars.addAll(this.vars);
+		return res;
 	}
 
 }
