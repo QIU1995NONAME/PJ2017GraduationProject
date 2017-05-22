@@ -1,0 +1,3 @@
+<div data-ng-app="QPControl">
+	<div data-ng-controller="mgr-back">用户管理预留</div>
+</div>

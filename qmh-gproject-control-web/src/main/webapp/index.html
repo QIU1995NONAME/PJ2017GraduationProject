@@ -1,10 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" data-ng-app="QPControl">
 <head>
 <meta charset="UTF-8">
-<link href="/Required/zui-1.6.0/css/zui.min.css" rel="stylesheet" />
-<script src="/Required/zui-1.6.0/lib/jquery/jquery.js"></script>
-<script src="/Required/zui-1.6.0/js/zui.min.js"></script>
+
+<link href="/Required/bower_components/zui/dist/css/zui.css" rel="stylesheet" />
+<link href="/Required/bower_components/zui/dist/lib/datatable/zui.datatable.css" rel="stylesheet" />
+<script src="/Required/bower_components/jquery/dist/jquery.js"></script>
+<script src="/Required/bower_components/angular/angular.js"></script>
+<script src="/Required/bower_components/angular-route/angular-route.js"></script>
+<script src="/Required/bower_components/zui/dist/js/zui.min.js"></script>
+<script src="/Required/bower_components/echarts/dist/echarts.js"></script>
+<script src="/Required/bower_components/zui/dist/lib/datatable/zui.datatable.js"></script>
+
 <title>QP-Control</title>
 </head>
 <body>
@@ -18,53 +25,24 @@
 					<span class="icon-bar"></span> 
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="./">QP-Control</a>
+				<a class="navbar-brand" href="#!/main">QP-Control</a>
 			</div>
 			<div class="collapse navbar-collapse navbar-collapse-qpcontrol">
 				<ul class="nav navbar-nav">
-					<li><a href="mgr-hardware.html">站点管理</a></li>
-					<li><a href="mgr-data.html">数据管理</a></li>
-					<li><a href="mgr-back.html">后台管理</a></li>
-					<li><a href="view-data.html">数据展示</a></li>
+					<li><a href="#!/mgr-hardware">站点管理</a></li>
+					<li><a href="#!/mgr-data">数据管理</a></li>
+					<li><a href="#!/mgr-back">后台管理</a></li>
+					<li><a href="#!/view-data">数据展示</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="help.html">帮助</a></li>
-					<li><a href="about.html">关于</a></li>
+					<li><a href="#!/help">帮助</a></li>
+					<li><a href="#!/about">关于</a></li>
 				</ul>
 			</div>
 		</div>
 	</nav>
-	<div class="container">
-		<div class="panel panel-primary">
-			<div class="panel-heading">欢迎使用QP-Control！</div>
-			<div class="panel-body">
-				<div class="cards">
-					<div class="col-md-4 col-sm-6 col-lg-2">
-						<a class="card" href="mgr-hardware.html"><h1 align='center'>站点管理</h1></a>
-					</div>
-					<div class="col-md-4 col-sm-6 col-lg-2">
-						<a class="card" href="mgr-data.html"><h1 align='center'>数据管理</h1></a>
-					</div>
-					<div class="col-md-4 col-sm-6 col-lg-2">
-						<a class="card" href="mgr-back.html"><h1 align='center'>后台管理</h1></a>
-					</div>
-					<div class="col-md-4 col-sm-6 col-lg-2">
-						<a class="card" href="view-data.html"><h1 align='center'>数据展示</h1></a>
-					</div>
-					<div class="col-md-4 col-sm-6 col-lg-2">
-						<a class="card" href="help.html"><h1 align='center'>帮助</h1></a>
-					</div>
-					<div class="col-md-4 col-sm-6 col-lg-2">
-						<a class="card" href="about.html"><h1 align='center'>关于</h1></a>
-					</div>
-				</div>
-			</div>
-			<div class="panel-footer">
-				<i class="icon icon-github"></i> <a
-					href="https://github.com/QIU1995NONAME/Q2017_GraduationProject/tree/V0.00-dev">QP-Control
-					Version 0.00</a>
-			</div>
-		</div>
-	</div>
+	<div class="container" data-ng-view ></div>
+	<script type="text/javascript" src="index.js"></script>
 </body>
 </html>
+

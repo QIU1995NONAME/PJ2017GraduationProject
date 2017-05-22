@@ -1,0 +1,11 @@
+<div data-ng-app="QPControl">
+	<div data-ng-controller="view-data">
+		<select class="chosen-select">
+			<option>请选择一个站点</option>
+			<option>ST_001</option>
+			<option>ST_002</option>
+			<option>ST_003</option>
+			<option>ST_004</option>
+		</select> 准备制作：数据曲线图。借助echart。显示某个数据项的历史纪录。
+	</div>
+</div>
