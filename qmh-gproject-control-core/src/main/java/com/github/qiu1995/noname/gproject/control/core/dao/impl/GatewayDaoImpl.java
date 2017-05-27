@@ -11,8 +11,11 @@ import com.github.qiu1995.noname.gproject.control.core.dao.GatewayDao;
 import com.github.qiu1995.noname.gproject.control.core.entity.Gateway;
 
 public class GatewayDaoImpl extends BaseDao implements GatewayDao {
+	public GatewayDaoImpl() {
+		super();
+	}
 
-	protected GatewayDaoImpl(Session session) {
+	public GatewayDaoImpl(Session session) {
 		super(session);
 	}
 

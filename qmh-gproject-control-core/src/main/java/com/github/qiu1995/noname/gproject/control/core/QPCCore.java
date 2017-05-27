@@ -1,5 +1,6 @@
 package com.github.qiu1995.noname.gproject.control.core;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
@@ -38,4 +39,7 @@ public class QPCCore {
 		}
 	}
 
+	public Session getSession() {
+		return _M_factory.openSession();
+	}
 }

@@ -10,8 +10,11 @@ import com.github.qiu1995.noname.gproject.control.core.dao.StationDao;
 import com.github.qiu1995.noname.gproject.control.core.entity.Station;
 
 public class StationDaoImpl extends BaseDao implements StationDao {
+	public StationDaoImpl() {
+		super();
+	}
 
-	protected StationDaoImpl(Session session) {
+	public StationDaoImpl(Session session) {
 		super(session);
 	}
 

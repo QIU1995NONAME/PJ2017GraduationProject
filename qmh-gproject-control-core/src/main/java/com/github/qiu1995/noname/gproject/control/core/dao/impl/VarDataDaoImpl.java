@@ -6,8 +6,11 @@ import com.github.qiu1995.noname.gproject.control.core.dao.BaseDao;
 import com.github.qiu1995.noname.gproject.control.core.dao.VarDataDao;
 
 public class VarDataDaoImpl extends BaseDao implements VarDataDao {
+	public VarDataDaoImpl() {
+		super();
+	}
 
-	protected VarDataDaoImpl(Session session) {
+	public VarDataDaoImpl(Session session) {
 		super(session);
 	}
 
