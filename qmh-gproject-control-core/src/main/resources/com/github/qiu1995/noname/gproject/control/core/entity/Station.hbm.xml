@@ -13,7 +13,7 @@
    <column default="0" index="IDX_STATION_STATUS" name="STATUS" not-null="true"/>
   </property>
   <property generated="never" lazy="false" name="name" type="java.lang.String">
-   <column default="'StationUnnamed'" index="IDX_STATION_STATUS"
+   <column default="'StationUnnamed'" index="IDX_STATION_NAME"
     length="50" name="NAME" not-null="true"/>
   </property>
   <property generated="never" lazy="false" name="comment" type="java.lang.String">

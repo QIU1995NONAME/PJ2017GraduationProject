@@ -15,8 +15,8 @@ public class Station {
 		return ID;
 	}
 
-	public void setID(int iD) {
-		ID = iD;
+	public void setID(int id) {
+		ID = id;
 	}
 
 	public int getStatus() {
