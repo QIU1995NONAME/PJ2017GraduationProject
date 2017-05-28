@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
 import com.github.qiu1995.noname.gproject.control.core.dao.BaseDao;
 import com.github.qiu1995.noname.gproject.control.core.dao.StationDao;
@@ -29,6 +30,7 @@ public class StationDaoImpl extends BaseDao implements StationDao {
 	@Override
 	public List<Station> getAllowedStations() {
 		return this._M_session.createCriteria(Station.class)//
+				.add(Restrictions.eq("status", 127))//
 				.list();
 	}
 
@@ -36,6 +38,7 @@ public class StationDaoImpl extends BaseDao implements StationDao {
 	@Override
 	public List<Station> getDeniedStations() {
 		return this._M_session.createCriteria(Station.class)//
+				.add(Restrictions.eq("status", -128))//
 				.list();
 	}
 
@@ -43,6 +46,7 @@ public class StationDaoImpl extends BaseDao implements StationDao {
 	@Override
 	public List<Station> getUncheckedGateway() {
 		return this._M_session.createCriteria(Station.class)//
+				.add(Restrictions.eq("status", 0))//
 				.list();
 	}
 
