@@ -18,8 +18,8 @@ angular.module('QPControl.mgr-hardware', [ 'ngRoute' ]).config([//
 		denied_stations : 0,
 		unchecked_stations : 0,
 	};
-	// function hardware_update_counts(var       res_counts){}
-	// $scope.counts = res_counts;
-	// $scope.$apply();
-	// }
+	ws_register('get_counts',function(result){
+		$scope.counts = result.counts;
+		$scope.$apply();
+	});
 } ]);
