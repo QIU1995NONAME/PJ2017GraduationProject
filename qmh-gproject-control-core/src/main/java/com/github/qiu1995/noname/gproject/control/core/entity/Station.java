@@ -3,6 +3,7 @@ package com.github.qiu1995.noname.gproject.control.core.entity;
 import java.util.Set;
 
 import com.google.common.collect.Sets;
+import com.google.gson.JsonObject;
 
 public class Station {
 	private int ID;
@@ -68,5 +69,12 @@ public class Station {
 		res.vars.addAll(this.vars);
 		return res;
 	}
-
+	public JsonObject toJsonObj() {
+		JsonObject res = new JsonObject();
+		res.addProperty("ID", this.getID());
+		res.addProperty("name", this.getName());
+		res.addProperty("status", this.getStatus());
+		res.addProperty("comment", this.getComment());
+		return res;
+	}
 }

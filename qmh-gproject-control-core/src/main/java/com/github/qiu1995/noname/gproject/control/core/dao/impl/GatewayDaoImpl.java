@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 
 import com.github.qiu1995.noname.gproject.control.core.dao.BaseDao;
@@ -17,6 +18,41 @@ public class GatewayDaoImpl extends BaseDao implements GatewayDao {
 
 	public GatewayDaoImpl(Session session) {
 		super(session);
+	}
+
+	@SuppressWarnings("deprecation")
+	@Override
+	public int getAllGatewaysCount() {
+		return Integer.parseInt(this._M_session.createCriteria(Gateway.class)//
+				.setProjection(Projections.rowCount())//
+				.uniqueResult().toString());
+	}
+
+	@SuppressWarnings("deprecation")
+	@Override
+	public int getAllowedGatewaysCount() {
+		return Integer.parseInt(this._M_session.createCriteria(Gateway.class)//
+				.add(Restrictions.eq("status", 127))//
+				.setProjection(Projections.rowCount())//
+				.uniqueResult().toString());
+	}
+
+	@SuppressWarnings("deprecation")
+	@Override
+	public int getDeniedGatewaysCount() {
+		return Integer.parseInt(this._M_session.createCriteria(Gateway.class)//
+				.add(Restrictions.eq("status", -128))//
+				.setProjection(Projections.rowCount())//
+				.uniqueResult().toString());
+	}
+
+	@SuppressWarnings("deprecation")
+	@Override
+	public int getUncheckedGatewaysCount() {
+		return Integer.parseInt(this._M_session.createCriteria(Gateway.class)//
+				.add(Restrictions.eq("status", 0))//
+				.setProjection(Projections.rowCount())//
+				.uniqueResult().toString());
 	}
 
 	@SuppressWarnings({ "unchecked", "deprecation" })

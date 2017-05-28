@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 
 import com.github.qiu1995.noname.gproject.control.core.dao.BaseDao;
@@ -17,6 +18,41 @@ public class StationDaoImpl extends BaseDao implements StationDao {
 
 	public StationDaoImpl(Session session) {
 		super(session);
+	}
+
+	@SuppressWarnings("deprecation")
+	@Override
+	public int getAllStationsCount() {
+		return Integer.parseInt(this._M_session.createCriteria(Station.class)//
+				.setProjection(Projections.rowCount())//
+				.uniqueResult().toString());
+	}
+
+	@SuppressWarnings("deprecation")
+	@Override
+	public int getAllowedStationsCount() {
+		return Integer.parseInt(this._M_session.createCriteria(Station.class)//
+				.add(Restrictions.eq("status", 127))//
+				.setProjection(Projections.rowCount())//
+				.uniqueResult().toString());
+	}
+
+	@SuppressWarnings("deprecation")
+	@Override
+	public int getDeniedStationsCount() {
+		return Integer.parseInt(this._M_session.createCriteria(Station.class)//
+				.add(Restrictions.eq("status", -128))//
+				.setProjection(Projections.rowCount())//
+				.uniqueResult().toString());
+	}
+
+	@SuppressWarnings("deprecation")
+	@Override
+	public int getUncheckedStationsCount() {
+		return Integer.parseInt(this._M_session.createCriteria(Station.class)//
+				.add(Restrictions.eq("status", 0))//
+				.setProjection(Projections.rowCount())//
+				.uniqueResult().toString());
 	}
 
 	@SuppressWarnings({ "unchecked", "deprecation" })

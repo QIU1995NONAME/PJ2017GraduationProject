@@ -6,6 +6,34 @@ import com.github.qiu1995.noname.gproject.control.core.entity.Station;
 
 public interface StationDao {
 	/**
+	 * 获取所有站点数量
+	 * 
+	 * @return
+	 */
+	int getAllStationsCount();
+
+	/**
+	 * 获取所有允许通信的站点数量
+	 * 
+	 * @return
+	 */
+	int getAllowedStationsCount();
+
+	/**
+	 * 获取所有被拒绝的站点数量
+	 * 
+	 * @return
+	 */
+	int getDeniedStationsCount();
+
+	/**
+	 * 获取所有未经判断的站点数量
+	 * 
+	 * @return
+	 */
+	int getUncheckedStationsCount();
+
+	/**
 	 * 获取所有站点
 	 * 
 	 * @return

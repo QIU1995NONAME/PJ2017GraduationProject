@@ -1,5 +1,7 @@
 package com.github.qiu1995.noname.gproject.control.core.entity;
 
+import com.google.gson.JsonObject;
+
 public class Gateway {
 	private int ID;
 	private int status;
@@ -51,6 +53,15 @@ public class Gateway {
 		res.name = this.name;
 		res.status = this.status;
 		res.comment = this.comment;
+		return res;
+	}
+
+	public JsonObject toJsonObj() {
+		JsonObject res = new JsonObject();
+		res.addProperty("ID", this.getID());
+		res.addProperty("name", this.getName());
+		res.addProperty("status", this.getStatus());
+		res.addProperty("comment", this.getComment());
 		return res;
 	}
 

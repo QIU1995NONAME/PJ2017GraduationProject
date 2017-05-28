@@ -6,6 +6,34 @@ import com.github.qiu1995.noname.gproject.control.core.entity.Gateway;
 
 public interface GatewayDao {
 	/**
+	 * 获取数据库中所有的Gateway数量
+	 * 
+	 * @return
+	 */
+	int getAllGatewaysCount();
+
+	/**
+	 * 获取所有允许通信的Gateway数量
+	 * 
+	 * @return
+	 */
+	int getAllowedGatewaysCount();
+
+	/**
+	 * 获取所有被拒绝的Gateway数量
+	 * 
+	 * @return
+	 */
+	int getDeniedGatewaysCount();
+
+	/**
+	 * 获取所有未经判断的Gateway数量
+	 * 
+	 * @return
+	 */
+	int getUncheckedGatewaysCount();
+
+	/**
 	 * 获取数据库中所有的Gateway
 	 * 
 	 * @return
