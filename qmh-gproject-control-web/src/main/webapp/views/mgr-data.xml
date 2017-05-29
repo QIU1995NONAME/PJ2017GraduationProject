@@ -29,8 +29,12 @@
 							<td>9</td>
 							<td>测试值81</td>
 							<td>可写</td>
-							<td><input /></td>
-							<td><button>应用</button></td>
+							<td>
+								<input />
+							</td>
+							<td>
+								<button>应用</button>
+							</td>
 						</tr>
 						<tr>
 							<td>V81</td>
@@ -38,8 +42,12 @@
 							<td>9</td>
 							<td>测试值81</td>
 							<td>可写</td>
-							<td><input /></td>
-							<td><button>应用</button></td>
+							<td>
+								<input />
+							</td>
+							<td>
+								<button>应用</button>
+							</td>
 						</tr>
 						<tr>
 							<td>V81</td>
@@ -47,8 +55,12 @@
 							<td>9</td>
 							<td>测试值81</td>
 							<td>可写</td>
-							<td><input /></td>
-							<td><button>应用</button></td>
+							<td>
+								<input />
+							</td>
+							<td>
+								<button>应用</button>
+							</td>
 						</tr>
 						<tr>
 							<td>V81</td>
@@ -56,8 +68,12 @@
 							<td>9</td>
 							<td>测试值81</td>
 							<td>可写</td>
-							<td><input /></td>
-							<td><button>应用</button></td>
+							<td>
+								<input />
+							</td>
+							<td>
+								<button>应用</button>
+							</td>
 						</tr>
 						<tr>
 							<td>V81</td>
@@ -65,8 +81,12 @@
 							<td>9</td>
 							<td>测试值81</td>
 							<td>可写</td>
-							<td><input /></td>
-							<td><button>应用</button></td>
+							<td>
+								<input />
+							</td>
+							<td>
+								<button>应用</button>
+							</td>
 						</tr>
 						<tr>
 							<td>V81</td>
@@ -74,8 +94,12 @@
 							<td>9</td>
 							<td>测试值81</td>
 							<td>可写</td>
-							<td><input /></td>
-							<td><button>应用</button></td>
+							<td>
+								<input />
+							</td>
+							<td>
+								<button>应用</button>
+							</td>
 						</tr>
 						<tr>
 							<td>V81</td>
@@ -83,8 +107,12 @@
 							<td>9</td>
 							<td>测试值81</td>
 							<td>可写</td>
-							<td><input /></td>
-							<td><button>应用</button></td>
+							<td>
+								<input />
+							</td>
+							<td>
+								<button>应用</button>
+							</td>
 						</tr>
 						<tr>
 							<td>V81</td>
@@ -92,8 +120,12 @@
 							<td>9</td>
 							<td>测试值81</td>
 							<td>可写</td>
-							<td><input /></td>
-							<td><button>应用</button></td>
+							<td>
+								<input />
+							</td>
+							<td>
+								<button>应用</button>
+							</td>
 						</tr>
 					</tbody>
 				</table>

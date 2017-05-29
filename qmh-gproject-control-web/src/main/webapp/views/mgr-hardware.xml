@@ -1,31 +1,38 @@
 <div data-ng-app="QPControl">
 	<div data-ng-controller="mgr-hardware">
 		<ul class="nav nav-tabs">
-			<li class="active"><a href="###" data-target="#panel1-gateway"
-				data-toggle="tab">网关控制面板<span class="label label-badge">0</span></a></li>
-			<li><a href="###" data-target="#panel1-station"
-				data-toggle="tab">站点控制面板<span class="label label-badge">0</span></a></li>
+			<li class="active">
+				<button type="button" class="btn" data-target="#panel1-gateway"
+					data-toggle="tab">
+					网关控制面板
+					<span class="label label-badge">{{counts.gateways}}</span>
+				</button>
+			</li>
+			<li>
+				<button type="button" class="btn" data-target="#panel1-station"
+					data-toggle="tab">
+					站点控制面板
+					<span class="label label-badge">{{counts.stations}}</span>
+				</button>
+			</li>
 		</ul>
 		<div class="tab-content">
-			<div class="panel panel-info tab-pane fade active in"
-				id="panel1-gateway">
+			<div class="panel panel-info tab-pane fade active in" id="panel1-gateway">
 				<div class="panel-heading">网关控制面板</div>
 				<div class="panel-body">
 					<div class="btn-group">
-						<button type="button" class="btn" id="btn-allowed-gateway">
-							已允许通信的网关 <span class="label label-badge label-info">0</span>
+						<button type="button" class="btn" data-ng-click="btnallowedgateways()">
+							已允许通信的网关
+							<span class="label label-badge label-info">{{counts.allowed_gateways}}</span>
 						</button>
-						<button type="button" class="btn" id="btn-denied-gateway">
-							已禁止通信的网关 <span class="label label-badge label-info">0</span>
+						<button type="button" class="btn" data-ng-click="btndeniedgateways()">
+							已禁止通信的网关
+							<span class="label label-badge label-info">{{counts.denied_gateways}}</span>
 						</button>
-						<button type="button" class="btn" id="btn-default-gateway">
-							未设置权限的网关 <span class="label label-badge label-warning">0</span>
+						<button type="button" class="btn" data-ng-click="btnuncheckedgateways()">
+							未设置权限的网关
+							<span class="label label-badge label-warning">{{counts.unchecked_gateways}}</span>
 						</button>
-					</div>
-					<div class="btn-group" style="float: right;">
-						<button type="button" class="btn btn-primary">Modify</button>
-						<button type="button" class="btn btn-success">Allow</button>
-						<button type="button" class="btn btn-danger">Deny</button>
 					</div>
 					<table class="table datatable table-bordered">
 						<thead>
@@ -34,9 +41,26 @@
 								<th width="15%">网关名称</th>
 								<th width="15%">当前状态</th>
 								<th class="flex-col">描述</th>
+								<th width="25%">操作</th>
 							</tr>
 						</thead>
 						<tbody>
+							<tr data-ng-repeat="gateway in gateways">
+								<td>{{gateway.ID}}</td>
+								<td>{{gateway.name}}</td>
+								<td>{{gateway.status}}</td>
+								<td>{{gateway.comment}}</td>
+								<td>
+									<button type="button" class="btn btn-primary"
+										data-ng-click="btndomodifygateway($index)">Modify</button>
+									<button type="button" class="btn btn-success"
+										data-ng-click="btndoallowgateway($index)" data-ng-disabled="gallowed">Allow
+									</button>
+									<button type="button" class="btn btn-danger"
+										data-ng-click="btndodenygateway($index)" data-ng-disabled="gdenied">Deny
+									</button>
+								</td>
+							</tr>
 						</tbody>
 					</table>
 				</div>
@@ -45,20 +69,18 @@
 				<div class="panel-heading">站点控制面板</div>
 				<div class="panel-body">
 					<div class="btn-group">
-						<button type="button" class="btn" id="btn-allowed-station">
-							已允许通信的站点 <span class="label label-badge label-info">0</span>
+						<button type="button" class="btn" data-ng-click="btnallowedstations()">
+							已允许通信的站点
+							<span class="label label-badge label-info">{{counts.allowed_stations}}</span>
 						</button>
-						<button type="button" class="btn" id="btn-denied-station">
-							已禁止通信的站点 <span class="label label-badge label-info">0</span>
+						<button type="button" class="btn" data-ng-click="btndeniedstations()">
+							已禁止通信的站点
+							<span class="label label-badge label-info">{{counts.denied_stations}}</span>
 						</button>
-						<button type="button" class="btn" id="btn-default-station">
-							未设置权限的站点 <span class="label label-badge label-warning">0</span>
+						<button type="button" class="btn" data-ng-click="btnuncheckedstations()">
+							未设置权限的站点
+							<span class="label label-badge label-warning">{{counts.unchecked_stations}}</span>
 						</button>
-					</div>
-					<div class="btn-group" style="float: right;">
-						<button type="button" class="btn btn-primary">Modify</button>
-						<button type="button" class="btn btn-success">Allow</button>
-						<button type="button" class="btn btn-danger">Deny</button>
 					</div>
 					<table class="table datatable table-bordered">
 						<thead>
@@ -67,24 +89,25 @@
 								<th width="15%">站点名称</th>
 								<th width="15%">当前状态</th>
 								<th class="flex-col">描述</th>
+								<th width="25%">操作</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td>ST_001</td>
-								<td>用于测试的记录</td>
-							</tr>
-							<tr>
-								<td>ST_002</td>
-								<td>用于测试的记录</td>
-							</tr>
-							<tr>
-								<td>ST_003</td>
-								<td>用于测试的记录</td>
-							</tr>
-							<tr>
-								<td>ST_004</td>
-								<td>用于测试的记录</td>
+							<tr data-ng-repeat="station in stations">
+								<td>{{station.ID}}</td>
+								<td>{{station.name}}</td>
+								<td>{{station.status}}</td>
+								<td>{{station.comment}}</td>
+								<td>
+									<button type="button" class="btn btn-primary"
+										data-ng-click="btndomodifystation($index)">Modify</button>
+									<button type="button" class="btn btn-success"
+										data-ng-click="btndoallowstation($index)" data-ng-disabled="sallowed">Allow
+									</button>
+									<button type="button" class="btn btn-danger"
+										data-ng-click="btndodenystation($index)" data-ng-disabled="sdenied">Deny
+									</button>
+								</td>
 							</tr>
 						</tbody>
 					</table>

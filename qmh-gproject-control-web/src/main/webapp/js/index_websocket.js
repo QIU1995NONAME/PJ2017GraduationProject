@@ -3,17 +3,14 @@ var wsclienturi = "ws://localhost:8080/qmh-gproject-control-web/ws/main.ws";
 var wsclient0 = null;
 var ws_registers = [];
 var ws_callbacks = [];
-var ws_currentcommand = '';
 function ws_send(data) {
+	console.log(JSON.stringify(data));
 	return wsclient0.send(JSON.stringify(data));
 }
 function ws_register(command, callback) {
 	ws_callbacks.push({
 		command : command,
 		callback : callback
-	});
-	return ws_send({
-		command : command
 	});
 }
 function new_wsclient() {
