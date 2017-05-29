@@ -134,7 +134,8 @@ public class StationDaoImpl extends BaseDao implements StationDao {
 			tx.rollback();
 			throw new IllegalArgumentException("Station ID 不存在！");
 		}
-		this._M_session.saveOrUpdate(station.clone());
+		// this._M_session.saveOrUpdate(station.clone());
+		this._M_session.saveOrUpdate(station);
 		tx.commit();
 		return 0;
 	}

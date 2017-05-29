@@ -134,7 +134,8 @@ public class GatewayDaoImpl extends BaseDao implements GatewayDao {
 			tx.rollback();
 			throw new IllegalArgumentException("Gateway ID 不存在！");
 		}
-		this._M_session.saveOrUpdate(gateway.clone());
+		// this._M_session.saveOrUpdate(gateway.clone());
+		this._M_session.saveOrUpdate(gateway);
 		tx.commit();
 		return 0;
 	}
