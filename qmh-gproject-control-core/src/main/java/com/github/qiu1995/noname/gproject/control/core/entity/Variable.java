@@ -1,18 +1,23 @@
 package com.github.qiu1995.noname.gproject.control.core.entity;
 
+import java.util.Set;
+
+import com.google.gson.JsonObject;
+
 public class Variable {
 	private long ID;
 	private Station owner;
 	private int num;
 	private int length;
 	private String comment;
+	private Set<VarData> dataset;
 
 	public long getID() {
 		return ID;
 	}
 
-	public void setID(long iD) {
-		ID = iD;
+	public void setID(long id) {
+		ID = id;
 	}
 
 	public Station getOwner() {
@@ -46,4 +51,23 @@ public class Variable {
 	public void setComment(String comment) {
 		this.comment = comment;
 	}
+
+	public Set<VarData> getDataset() {
+		return dataset;
+	}
+
+	public void setDataset(Set<VarData> dataset) {
+		this.dataset = dataset;
+	}
+
+	public JsonObject toJsonObj() {
+		JsonObject res = new JsonObject();
+		res.addProperty("ID", this.getID());
+		res.addProperty("owner", this.owner.getID());
+		res.addProperty("num", this.getNum());
+		res.addProperty("length", this.getLength());
+		res.addProperty("comment", this.getComment());
+		return res;
+	}
+
 }

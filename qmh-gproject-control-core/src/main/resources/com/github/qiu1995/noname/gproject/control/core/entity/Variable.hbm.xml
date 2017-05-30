@@ -23,5 +23,11 @@
   <property generated="never" lazy="false" name="comment" type="java.lang.String">
    <column name="COMMENT"/>
   </property>
+  <set lazy="true" name="dataset" sort="unsorted" table="VARDATA">
+   <key>
+    <column name="VAR"/>
+   </key>
+   <one-to-many class="com.github.qiu1995.noname.gproject.control.core.entity.VarData"/>
+  </set>
  </class>
 </hibernate-mapping>

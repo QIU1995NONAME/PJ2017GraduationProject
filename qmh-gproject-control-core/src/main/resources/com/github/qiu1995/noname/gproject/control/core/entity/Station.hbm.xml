@@ -3,8 +3,7 @@
                                    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 2017-5-21 15:36:48 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
- <class
-  name="com.github.qiu1995.noname.gproject.control.core.entity.Station" table="STATION">
+ <class name="com.github.qiu1995.noname.gproject.control.core.entity.Station" table="STATION">
   <id name="ID" type="int">
    <column name="ID"/>
    <generator class="assigned"/>
@@ -19,9 +18,9 @@
   <property generated="never" lazy="false" name="comment" type="java.lang.String">
    <column name="COMMENT"/>
   </property>
-  <set lazy="true" name="vars" sort="unsorted" table="VARIABLE">
+  <set lazy="false" name="vars" order-by="owner,num" sort="unsorted" table="VARIABLE">
    <key>
-    <column name="ID"/>
+    <column name="OWNER"/>
    </key>
    <one-to-many class="com.github.qiu1995.noname.gproject.control.core.entity.Variable"/>
   </set>
