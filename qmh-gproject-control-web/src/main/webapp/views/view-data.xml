@@ -1,11 +1,42 @@
 <div data-ng-app="QPControl">
 	<div data-ng-controller="view-data">
-		<select class="chosen-select">
-			<option>请选择一个站点</option>
-			<option>ST_001</option>
-			<option>ST_002</option>
-			<option>ST_003</option>
-			<option>ST_004</option>
-		</select> 准备制作：数据曲线图。借助echart。显示某个数据项的历史纪录。
+		<div id="vd-left" class="panel panel-success" style="float:left;width:20%;">
+			<div class="panel-heading">数据配置</div>
+			<div class="panel-body">
+				被选中的站点：
+				<br />
+				<select class="chosen-select" data-ng-change="selectstation()"
+					data-ng-model="current_station"
+					data-ng-options="'ST :' + station.ID + '(' + station.name + ')' for station in stations">
+				</select>
+				<hr />
+				被选中的变量:
+				<br />
+				<select class="chosen-select" data-ng-change="selectvariable()"
+					data-ng-model="current_variable"
+					data-ng-options="'VAR:' + variable.owner + ':' + variable.num for variable in variables">
+				</select>
+				<hr />
+				<div class="switch switch-inline">
+					<input type="checkbox" data-ng-model="auto_refresh"/>
+					<label>自动刷新</label>
+				</div>
+			</div>
+		</div>
+		<div id="vd-right" class="panel panel-primary" style="float:left;width:80%;">
+			<div class="panel-heading">VAR:{{current_variable.owner + ':' +
+				current_variable.num}}的曲线图
+			</div>
+			<div class="panel-body">
+				<div id="chart0" style="width:100%;height:400px;"></div>
+			</div>
+		</div>
 	</div>
 </div>
+<!-- <div></div> <select class="chosen-select"> <option>请选择一个站点</option> 
+	<option>ST_001</option> <option>ST_002</option> <option>ST_003</option> <option>ST_004</option> 
+	</select> 准备制作：数据曲线图。借助echart。显示某个数据项的历史纪录。 </div> <style> body{ margin:0; 
+	height:100%} html{ height:100%} /*兼容firefox的div高度100%*/ #left{ position:absolute; 
+	top:0; left:0; width:200px; height:100%; background-color:#CCCCCC} #right{ 
+	} </style> <div id="l<div class="panel panel-primary"> ... </div> <div class="panel 
+	panel-success"> ... </div>eft">left</div> <div id="right">right</div> -->

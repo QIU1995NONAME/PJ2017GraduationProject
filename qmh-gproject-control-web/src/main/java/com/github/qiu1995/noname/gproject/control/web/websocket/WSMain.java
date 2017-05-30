@@ -1,6 +1,7 @@
 package com.github.qiu1995.noname.gproject.control.web.websocket;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.websocket.OnClose;
 import javax.websocket.OnError;
@@ -11,10 +12,14 @@ import javax.websocket.server.ServerEndpoint;
 
 import com.github.qiu1995.noname.gproject.control.core.dao.GatewayDao;
 import com.github.qiu1995.noname.gproject.control.core.dao.StationDao;
+import com.github.qiu1995.noname.gproject.control.core.dao.VarDataDao;
 import com.github.qiu1995.noname.gproject.control.core.dao.impl.GatewayDaoImpl;
 import com.github.qiu1995.noname.gproject.control.core.dao.impl.StationDaoImpl;
+import com.github.qiu1995.noname.gproject.control.core.dao.impl.VarDataDaoImpl;
 import com.github.qiu1995.noname.gproject.control.core.entity.Gateway;
 import com.github.qiu1995.noname.gproject.control.core.entity.Station;
+import com.github.qiu1995.noname.gproject.control.core.entity.VarData;
+import com.github.qiu1995.noname.gproject.control.core.entity.Variable;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -178,53 +183,96 @@ public class WSMain {
 		return result;
 	}
 
+	protected JsonElement msg_get_station_variables(JsonElement data) {
+		JsonArray result = new JsonArray();
+		if (data == null) {
+			// TODO
+			return result;
+		}
+		StationDao dao = new StationDaoImpl();
+		Station station = dao.getStationByID(data.getAsInt());
+		if (station == null) {
+			// TODO
+			return result;
+		}
+		Set<Variable> vars = station.getVars();
+		for (Variable var : vars) {
+			result.add(var.toJsonObj());
+		}
+		// TODO
+		return result;
+	}
+
+	protected JsonElement msg_get_variable_history(JsonElement data) {
+		JsonArray result = new JsonArray();
+		if (data == null) {
+			// TODO
+			return result;
+		}
+		VarDataDao dao = new VarDataDaoImpl();
+		List<VarData> li = dao.getVariableHistoryData(data.getAsLong(), 2000);
+		for (VarData vd : li) {
+			result.add(vd.toJsonObj());
+		}
+		// TODO
+		return result;
+	}
+
 	@OnMessage
 	public String onMessage(Session session, String message) {
-		System.out.println(message);
+		System.out.println("IN : " + message);
 		JsonObject request = (JsonObject) new JsonParser().parse(message);
 		String command = request.get("command").getAsString();
 		JsonObject result = new JsonObject();
 		result.addProperty("command", command);
-		if (command == null || command.length() == 0) {
-			result.addProperty("errno", 10001);
-			result.addProperty("errinfo", "command 不可以为空！");
-		} else if (command.equalsIgnoreCase("get_counts")) {
-			result.addProperty("errno", 0);
-			result.addProperty("errinfo", "正常");
-			result.add("data", msg_get_counts(request.get("data")));
-		} else if (command.equalsIgnoreCase("get_gateways_allowed")) {
-			result.add("data", msg_get_gateways_allowed(request.get("data")));
-		} else if (command.equalsIgnoreCase("get_gateways_denied")) {
-			result.add("data", msg_get_gateways_denied(request.get("data")));
-		} else if (command.equalsIgnoreCase("get_gateways_unchecked")) {
-			result.add("data", msg_get_gateways_unchecked(request.get("data")));
-		} else if (command.equalsIgnoreCase("get_stations_allowed")) {
-			result.add("data", msg_get_stations_allowed(request.get("data")));
-		} else if (command.equalsIgnoreCase("get_stations_denied")) {
-			result.add("data", msg_get_stations_denied(request.get("data")));
-		} else if (command.equalsIgnoreCase("get_stations_unchecked")) {
-			result.add("data", msg_get_stations_unchecked(request.get("data")));
-		} else if (command.equalsIgnoreCase("allow_gateway")) {
-			result.add("data", msg_allow_gateway(request.get("data")));
-		} else if (command.equalsIgnoreCase("deny_gateway")) {
-			result.add("data", msg_deny_gateway(request.get("data")));
-		} else if (command.equalsIgnoreCase("allow_station")) {
-			result.add("data", msg_allow_station(request.get("data")));
-		} else if (command.equalsIgnoreCase("deny_station")) {
-			result.add("data", msg_deny_station(request.get("data")));
-		} else if (command.equalsIgnoreCase("get_gateways_online")) {
-		} else if (command.equalsIgnoreCase("get_stations_online")) {
-		} else if (command.equalsIgnoreCase("modify_gateway")) {
-		} else if (command.equalsIgnoreCase("modify_station")) {
-		} else if (command.equalsIgnoreCase("get_station_variables")) {
-		} else if (command.equalsIgnoreCase("get_variable_history")) {
-		} else if (command.equalsIgnoreCase("get_variable_current")) {
-		} else if (command.equalsIgnoreCase("set_variable_data")) {
-		} else {
-			result.addProperty("errno", 99999);
-			result.addProperty("errinfo", "暂不支持command" + command);
+		try {
+			if (command == null || command.length() == 0) {
+				result.addProperty("errno", 10001);
+				result.addProperty("errinfo", "command 不可以为空！");
+			} else if (command.equalsIgnoreCase("get_counts")) {
+				result.addProperty("errno", 0);
+				result.addProperty("errinfo", "正常");
+				result.add("data", msg_get_counts(request.get("data")));
+			} else if (command.equalsIgnoreCase("get_gateways_allowed")) {
+				result.add("data", msg_get_gateways_allowed(request.get("data")));
+			} else if (command.equalsIgnoreCase("get_gateways_denied")) {
+				result.add("data", msg_get_gateways_denied(request.get("data")));
+			} else if (command.equalsIgnoreCase("get_gateways_unchecked")) {
+				result.add("data", msg_get_gateways_unchecked(request.get("data")));
+			} else if (command.equalsIgnoreCase("get_stations_allowed")) {
+				result.add("data", msg_get_stations_allowed(request.get("data")));
+			} else if (command.equalsIgnoreCase("get_stations_denied")) {
+				result.add("data", msg_get_stations_denied(request.get("data")));
+			} else if (command.equalsIgnoreCase("get_stations_unchecked")) {
+				result.add("data", msg_get_stations_unchecked(request.get("data")));
+			} else if (command.equalsIgnoreCase("allow_gateway")) {
+				result.add("data", msg_allow_gateway(request.get("data")));
+			} else if (command.equalsIgnoreCase("deny_gateway")) {
+				result.add("data", msg_deny_gateway(request.get("data")));
+			} else if (command.equalsIgnoreCase("allow_station")) {
+				result.add("data", msg_allow_station(request.get("data")));
+			} else if (command.equalsIgnoreCase("deny_station")) {
+				result.add("data", msg_deny_station(request.get("data")));
+			} else if (command.equalsIgnoreCase("get_gateways_online")) {
+			} else if (command.equalsIgnoreCase("get_stations_online")) {
+			} else if (command.equalsIgnoreCase("modify_gateway")) {
+			} else if (command.equalsIgnoreCase("modify_station")) {
+			} else if (command.equalsIgnoreCase("get_station_variables")) {
+				result.add("data", msg_get_station_variables(request.get("data")));
+			} else if (command.equalsIgnoreCase("get_variable_history")) {
+				result.add("data", msg_get_variable_history(request.get("data")));
+			} else if (command.equalsIgnoreCase("get_variable_current")) {
+			} else if (command.equalsIgnoreCase("set_variable_data")) {
+			} else {
+				result.addProperty("errno", 99999);
+				result.addProperty("errinfo", "暂不支持command" + command);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			result.addProperty("errno", 88888);
+			result.addProperty("errinfo", command + "内部错误");
 		}
-		System.out.println(new Gson().toJson(result));
+		System.out.println("OUT: " + new Gson().toJson(result));
 		return new Gson().toJson(result);
 	}
 

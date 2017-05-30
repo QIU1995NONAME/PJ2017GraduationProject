@@ -1,131 +1,38 @@
 <div data-ng-app="QPControl">
 	<div data-ng-controller="mgr-data">
-		<select class="chosen-select">
-			<option>请选择一个站点</option>
-			<option>ST_001</option>
-			<option>ST_002</option>
-			<option>ST_003</option>
-			<option>ST_004</option>
+		<select class="chosen-select" data-ng-change="selectstation()"
+			data-ng-model="current_station" data-ng-options="'ST:' + station.ID + '(' + station.name + ')' for station in stations">
 		</select>
 		<div class="panel panel-info" id="panel1-datatable">
-			<div class="panel-heading">站点 XXX 的数据表格</div>
+			<div class="panel-heading">
+				站点 ST:{{current_station.ID}}({{current_station.name}}) 的数据表格
+			</div>
 			<div class="panel-body">
 				<table class="table table-bordered">
 					<thead>
 						<tr>
-							<th width="10%">变量ID</th>
-							<th width="10%">变量长度</th>
+							<th width="10%">SID</th>
+							<th width="10%">N</th>
+							<th width="10%">长度</th>
+							<th width="flex-col">描述</th>
+							<!-- 
 							<th width="15%">当前值</th>
-							<th class="flex-col">描述</th>
-							<th width="flex-col">是否可写</th>
-							<th width="10%">修改值</th>
+							<th width="15%">修改值</th>
+							 -->
 							<th width="10%">操作</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td>V81</td>
-							<td>2 Bytes</td>
-							<td>9</td>
-							<td>测试值81</td>
-							<td>可写</td>
-							<td>
-								<input />
-							</td>
-							<td>
-								<button>应用</button>
-							</td>
-						</tr>
-						<tr>
-							<td>V81</td>
-							<td>2 Bytes</td>
-							<td>9</td>
-							<td>测试值81</td>
-							<td>可写</td>
-							<td>
-								<input />
-							</td>
-							<td>
-								<button>应用</button>
-							</td>
-						</tr>
-						<tr>
-							<td>V81</td>
-							<td>2 Bytes</td>
-							<td>9</td>
-							<td>测试值81</td>
-							<td>可写</td>
-							<td>
-								<input />
-							</td>
-							<td>
-								<button>应用</button>
-							</td>
-						</tr>
-						<tr>
-							<td>V81</td>
-							<td>2 Bytes</td>
-							<td>9</td>
-							<td>测试值81</td>
-							<td>可写</td>
-							<td>
-								<input />
-							</td>
-							<td>
-								<button>应用</button>
-							</td>
-						</tr>
-						<tr>
-							<td>V81</td>
-							<td>2 Bytes</td>
-							<td>9</td>
-							<td>测试值81</td>
-							<td>可写</td>
-							<td>
-								<input />
-							</td>
-							<td>
-								<button>应用</button>
-							</td>
-						</tr>
-						<tr>
-							<td>V81</td>
-							<td>2 Bytes</td>
-							<td>9</td>
-							<td>测试值81</td>
-							<td>可写</td>
-							<td>
-								<input />
-							</td>
-							<td>
-								<button>应用</button>
-							</td>
-						</tr>
-						<tr>
-							<td>V81</td>
-							<td>2 Bytes</td>
-							<td>9</td>
-							<td>测试值81</td>
-							<td>可写</td>
-							<td>
-								<input />
-							</td>
-							<td>
-								<button>应用</button>
-							</td>
-						</tr>
-						<tr>
-							<td>V81</td>
-							<td>2 Bytes</td>
-							<td>9</td>
-							<td>测试值81</td>
-							<td>可写</td>
-							<td>
-								<input />
-							</td>
-							<td>
-								<button>应用</button>
-							</td>
+						<tr data-ng-repeat="variable in variables">
+							<td>{{variable.owner}}</td>
+							<td>{{variable.num}}</td>
+							<td>{{variable.length}} Byte(s)</td>
+							<td>{{variable.comment}}</td>
+							<!-- 
+							<td>"CURRENT_VARABLE"</td>
+							<td><input /></td>
+							 -->
+							<td><button>更正</button></td>
 						</tr>
 					</tbody>
 				</table>
