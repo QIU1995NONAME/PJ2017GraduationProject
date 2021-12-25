@@ -1,8 +1,7 @@
 apply plugin: 'java'
-apply plugin: 'eclipse'
 
 dependencies {
-    compile (
+    implementation(
         'io.netty:netty-all:4.1.11.Final',
         'com.google.code.gson:gson:2.8.0',
         'com.google.guava:guava:20.0',
@@ -13,7 +12,7 @@ dependencies {
         'org.hibernate:hibernate-entitymanager:5.2.4.Final',
         'org.hibernate:hibernate-ehcache:5.2.4.Final',
     )
-    testCompile (
+    testImplementation(
         'junit:junit:4.12',
     )
 }

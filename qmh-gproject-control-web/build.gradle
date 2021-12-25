@@ -1,21 +1,18 @@
 apply plugin: 'java'
 apply plugin: 'war'
-apply plugin: 'eclipse'
-apply plugin: 'eclipse-wtp'
 
 dependencies {
-    runtime (
+    implementation(
+        'com.google.code.gson:gson:2.8.0',
+        'javax.servlet:javax.servlet-api:3.1.0',
+        'javax.servlet.jsp:javax.servlet.jsp-api:2.3.1',
+        'javax.websocket:javax.websocket-api:1.1',
+        project(':qmh-gproject-control-core'),
         'javax.servlet:javax.servlet-api:3.1.0',
         'javax.servlet.jsp:javax.servlet.jsp-api:2.3.1',
         'javax.websocket:javax.websocket-api:1.1',
     )
-    compile (
-    	project(':qmh-gproject-control-core'),
-    	'javax.servlet:javax.servlet-api:3.1.0',
-        'javax.servlet.jsp:javax.servlet.jsp-api:2.3.1',
-        'javax.websocket:javax.websocket-api:1.1',
-    )
-    testCompile (
+    testImplementation(
         'junit:junit:4.12',
     )
 }
