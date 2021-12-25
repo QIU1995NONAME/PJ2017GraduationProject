@@ -9,14 +9,15 @@
 
 ```bash
 
-sdk update          # 升级 SDKMAN 自己
-sdk upgrade         # 升级 SDKMAN 管理的软件
+sdk update              # 升级 SDKMAN 自己
+sdk upgrade             # 升级 SDKMAN 管理的软件
 
-sdk install kotlin  # 使用 SDKMAN 安装工具
+sdk install kotlin      # 使用 SDKMAN 安装工具
 sdk install gradle
+sdk install springboot
 
-nvm install --lts   # 使用 NVM 安装 NodeJS LTS
-nvm list            # 列出 NVM 管理的 NodeJS 版本
+nvm install --lts       # 使用 NVM 安装 NodeJS LTS
+nvm list                # 列出 NVM 管理的 NodeJS 版本
 
 ```
 
