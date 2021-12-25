@@ -16,6 +16,9 @@ gradlew.bat
 gradlew
 build
 
+# Node JS
+node_modules/
+
 # Jetbrains
 cmake-build-debug/
 .idea/
